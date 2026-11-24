@@ -69,6 +69,9 @@ def run(filing_date: str, tickers: list[str], client, s3, bucket: str) -> dict:
     logger.info(json.dumps({"event": "run_complete", **{k: v for k, v in manifest.items() if k != "keys"}}))
     return manifest
 
+def resolve_tickers(event: dict | None, watchlist: str) -> list[str]:
+    raw = (event or {}).get("tickers") or watchlist.split(",")
+    return list(dict.fromkeys(t.strip().upper() for t in raw if t.strip()))
 
 def lambda_handler(event, context):
     import boto3  # available in the Lambda runtime; imported here so tests don't need AWS
