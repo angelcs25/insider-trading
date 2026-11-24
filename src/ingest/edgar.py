@@ -69,7 +69,6 @@ def build_ticker_map(company_tickers: dict) -> dict[str, int]:
 
 def insider_filings_on(submissions: dict, ticker: str, cik: int, filing_date: str) -> list[Filing]:
     """Pick the Form 4 / 4/A filings from an issuer's submissions JSON for one date.
-
     filings.recent is "column oriented": parallel lists where index i across
     every list describes one filing.
     """
@@ -79,8 +78,6 @@ def insider_filings_on(submissions: dict, ticker: str, cik: int, filing_date: st
     for i, form in enumerate(forms):
         if form not in INSIDER_FORMS or recent["filingDate"][i] != filing_date:
             continue
-        # primaryDocument points at the HTML-rendered view, e.g.
-        # "xslF345X05/wk-form4_1712345678.xml". The raw XML is the part after the slash.
         primary = recent["primaryDocument"][i]
         out.append(
             Filing(

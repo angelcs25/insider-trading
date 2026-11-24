@@ -3,7 +3,7 @@ from datetime import date
 
 import pytest
 
-from handler import partition_prefix, resolve_filing_date, run
+from ingest.handler import partition_prefix, resolve_filing_date, run
 from scripts.peek_form4 import parse_form4
 
 
