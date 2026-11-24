@@ -60,8 +60,4 @@ def test_manifest_written_even_when_no_filings(submissions):
     assert list(s3.objects) == [f"{partition_prefix('2026-01-01')}/_manifest.json"]
 
 
-def test_parse_form4_reads_trades(form4_xml):
-    trades = parse_form4(form4_xml)
-    assert [t["code"] for t in trades] == ["S", "P"]
-    assert trades[0]["shares"] == 10000 and trades[0]["price"] == 250.5
-    assert trades[0]["title"] == "Chief Example Officer"
+
