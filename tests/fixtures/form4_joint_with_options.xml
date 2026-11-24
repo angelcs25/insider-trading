@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!-- A made-up but realistic Form 4: two joint reporting owners, a 10b5-1 plan,
+     a sale whose price is only in a footnote, and an option exercise. -->
+<ownershipDocument>
+  <schemaVersion>X0508</schemaVersion>
+  <documentType>4</documentType>
+  <periodOfReport>2026-11-18</periodOfReport>
+  <aff10b5One>1</aff10b5One>
+  <issuer>
+    <issuerCik>0001045810</issuerCik>
+    <issuerName>EXAMPLE CHIPS CORP</issuerName>
+    <issuerTradingSymbol>nvda</issuerTradingSymbol>
+  </issuer>
+  <reportingOwner>
+    <reportingOwnerId>
+      <rptOwnerCik>0000000002</rptOwnerCik>
+      <rptOwnerName>Sample Sam</rptOwnerName>
+    </reportingOwnerId>
+    <reportingOwnerRelationship>
+      <isDirector>1</isDirector>
+      <isOfficer>1</isOfficer>
+      <isTenPercentOwner>0</isTenPercentOwner>
+      <officerTitle>President and CEO</officerTitle>
+    </reportingOwnerRelationship>
+  </reportingOwner>
+  <reportingOwner>
+    <reportingOwnerId>
+      <rptOwnerCik>0000000003</rptOwnerCik>
+      <rptOwnerName>Sam Family Trust</rptOwnerName>
+    </reportingOwnerId>
+    <reportingOwnerRelationship>
+      <isTenPercentOwner>1</isTenPercentOwner>
+    </reportingOwnerRelationship>
+  </reportingOwner>
+  <nonDerivativeTable>
+    <nonDerivativeTransaction>
+      <securityTitle><value>Common Stock</value></securityTitle>
+      <transactionDate><value>2026-11-18</value></transactionDate>
+      <transactionCoding><transactionCode>M</transactionCode></transactionCoding>
+      <transactionAmounts>
+        <transactionShares><value>5000</value></transactionShares>
+        <transactionPricePerShare><value>20</value></transactionPricePerShare>
+        <transactionAcquiredDisposedCode><value>A</value></transactionAcquiredDisposedCode>
+      </transactionAmounts>
+      <postTransactionAmounts>
+        <sharesOwnedFollowingTransaction><value>105000</value></sharesOwnedFollowingTransaction>
+      </postTransactionAmounts>
+      <ownershipNature><directOrIndirectOwnership><value>D</value></directOrIndirectOwnership></ownershipNature>
+    </nonDerivativeTransaction>
+    <nonDerivativeTransaction>
+      <securityTitle><value>Common Stock</value></securityTitle>
+      <transactionDate><value>2026-11-18</value></transactionDate>
+      <transactionCoding><transactionCode>S</transactionCode></transactionCoding>
+      <transactionAmounts>
+        <transactionShares><value>5000</value></transactionShares>
+        <transactionPricePerShare><footnoteId id="F1"/></transactionPricePerShare>
+        <transactionAcquiredDisposedCode><value>D</value></transactionAcquiredDisposedCode>
+      </transactionAmounts>
+      <postTransactionAmounts>
+        <sharesOwnedFollowingTransaction><value>100000</value></sharesOwnedFollowingTransaction>
+      </postTransactionAmounts>
+      <ownershipNature><directOrIndirectOwnership><value>I</value></directOrIndirectOwnership></ownershipNature>
+    </nonDerivativeTransaction>
+  </nonDerivativeTable>
+  <derivativeTable>
+    <derivativeTransaction>
+      <securityTitle><value>Stock Option (right to buy)</value></securityTitle>
+      <transactionDate><value>2026-11-18</value></transactionDate>
+      <transactionCoding><transactionCode>M</transactionCode></transactionCoding>
+      <transactionAmounts>
+        <transactionShares><value>5000</value></transactionShares>
+        <transactionPricePerShare><value>0</value></transactionPricePerShare>
+        <transactionAcquiredDisposedCode><value>D</value></transactionAcquiredDisposedCode>
+      </transactionAmounts>
+    </derivativeTransaction>
+  </derivativeTable>
+  <footnotes>
+    <footnote id="F1">Weighted average price. Shares sold in multiple trades
+      at prices from $180.10 to $181.00.</footnote>
+  </footnotes>
+</ownershipDocument>

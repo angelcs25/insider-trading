@@ -7,6 +7,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src" / "ingest"))
 sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0,str(ROOT / "src/transform"))
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -18,3 +19,6 @@ def submissions():
 def form4_xml():
     return (FIXTURES / "form4_sample.xml").read_bytes()
 
+@pytest.fixture
+def joint_xml():
+    return(FIXTURES / "form4_joint_with_options.xml").read_bytes()
