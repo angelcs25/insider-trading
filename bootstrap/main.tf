@@ -1,40 +1,46 @@
-#Creates s3 bucket that stores terraform state for the main stack (infra/)
-#Creates github OIDC identity provider + IAM role, so Github actions can deploy without storing long-lived AWS access keys anywhere
+#cd bootstrap && terraform init && terraform apply -var="github_repo=YOUR_USER/insider-pipeline"
+
+#Creates:
+#An S3 bucket that stores Terraform state for the main stack (infra/)
+#A GitHub OIDC identity provider + IAM role, so GitHub Actions can deploy
+#WITHOUT storing long-lived AWS access keys anywhere.
 
 terraform {
-    required-version = ">=1.10"
-    required-providers = {
-        aws = { source = "hashicorp/aws", version = "~> 6.0}
-    }
+  required_version = ">= 1.10"
+  required_providers {
+    aws = { source = "hashicorp/aws", version = "~> 6.0" }
+  }
 }
 
 provider "aws" {
-    region = var.region
+  region = var.region
 }
 
 variable "region" {
-    type = string
-    default = "us-east-1"
+  type    = string
+  default = "us-east-1"
 }
 
 variable "project" {
-    type = string
-    default = "insider-trading"
+  type    = string
+  default = "insider-pipeline"
 }
 
 variable "github_repo" {
-    description = "owner/name of your GitHub repo, e.g. jdoe/insider-trading"
-    type = string
+  description = "owner/name of your GitHub repo, e.g. jdoe/insider-pipeline"
+  type        = string
 }
 
 data "aws_caller_identity" "current" {}
 
 locals {
-    account_id = data.aws_caller_identity.current.account_id
+  account_id = data.aws_caller_identity.current.account_id
 }
 
+# ---------- Terraform state bucket ----------
+
 resource "aws_s3_bucket" "tf_state" {
-    bucket = "${var.project}-tf_state-${local.account.identity}"
+  bucket = "${var.project}-tfstate-${local.account_id}"
 }
 
 resource "aws_s3_bucket_versioning" "tf_state" {
