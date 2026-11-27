@@ -225,3 +225,12 @@ reports/
 *.xml
 !tests/fixtures/*.xml
 bootstrap.txt
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Keep lock files
+!.terraform.lock.hcl
