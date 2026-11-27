@@ -224,3 +224,4 @@ data/
 reports/
 *.xml
 !tests/fixtures/*.xml
+bootstrap.txt
